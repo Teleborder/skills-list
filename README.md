@@ -4,27 +4,27 @@ J-1 Skills List API
 API
 ---
 ### `GET /countries`
-Example: [skillslist.teleborder.com/countries](http://skillslist.teleborder.com/countries)
+**Example:** [skillslist.teleborder.com/countries](http://skillslist.teleborder.com/countries)
 Array of all ([according to mledoze](https://github.com/mledoze/countries)) [countries](#country).
 
 ### `GET /countries/:code`
-Example: [skillslist.teleborder.com/countries/BR](http://skillslist.teleborder.com/countries/BR)
+**Example:** [skillslist.teleborder.com/countries/BR](http://skillslist.teleborder.com/countries/BR)
 Shows the [country](#country) that matches the country `code`.
 
 ### `GET /countries/:code/list`
-Example: [skillslist.teleborder.com/countries/BR/list](http://skillslist.teleborder.com/countries/BR/list)
+**Example:** [skillslist.teleborder.com/countries/BR/list](http://skillslist.teleborder.com/countries/BR/list)
 Shows the [flattened `list`](#list) portion of the [country](#country)'s [skills list](#skills-list) that matches the country `code`.
 
 ### `GET /countries/:code/inverse`
-Example: [skillslist.teleborder.com/countries/BR/inverse](http://skillslist.teleborder.com/countries/BR/inverse)
+**Example:** [skillslist.teleborder.com/countries/BR/inverse](http://skillslist.teleborder.com/countries/BR/inverse)
 Shows the [list](#list) of skills from the Master List that are not on the country's skills list.
 
 ### `GET /skills`
-Example: [skillslist.teleborder.com/skills](http://skillslist.teleborder.com/skills)
+**Example:** [skillslist.teleborder.com/skills](http://skillslist.teleborder.com/skills)
 The Master [List](#skills-list) of all J-1 skills, as per the [2009 State Department Master List](http://travel.state.gov/content/visas/english/study-exchange/exchange/exchange-visitor-skills-list/exchange-skills-list-2009.html).
 
 ### `GET /skills/list`
-Example: [skillslist.teleborder.com/skills/list](http://skillslist.teleborder.com/skills/list)
+**Example:** [skillslist.teleborder.com/skills/list](http://skillslist.teleborder.com/skills/list)
 Shows the flattened `list` portion of the Master [Skills List](#skills-list).
 
 Objects
