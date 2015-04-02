@@ -12,10 +12,16 @@ API
 Array of all ([according to mledoze](https://github.com/mledoze/countries)) [countries](#country).
 
 ### `GET /countries/:code`
-Shows the [country](#country) that matches the country `code`..
+Shows the [country](#country) that matches the country `code`.
+
+### `GET /countries/:code/list`
+Shows the flattened `list` portion of the [country](#country)'s [skills list](#list) that matches the country `code`.
 
 ### `GET /skills`
 The Master [List](#list) of all J-1 skills, as per the [2009 State Department Master List](http://travel.state.gov/content/visas/english/study-exchange/exchange/exchange-visitor-skills-list/exchange-skills-list-2009.html).
+
+### `GET /skills/list`
+Shows the flattened `list` portion of the Master [Skills List](#list).
 
 Objects
 -------
