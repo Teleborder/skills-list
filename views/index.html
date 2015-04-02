@@ -9,8 +9,23 @@
     <div id="content"></div>
     <script type="text/jsx">
       var CountrySelect = React.createClass({
+        getInitialState: function() {
+          return { data: [] };
+        },
+        componentDidMount: function() {
+          $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            success: function(data) {
+              this.setState({ data: data });
+            }.bind(this),
+            error: function(xhr, status, err) {
+              console.error(this.props.url, status, err.toString());
+            }.bind(this)
+          });
+        },
         render: function () {
-          var countryOptions = this.props.data.map(function (country) {
+          var countryOptions = this.state.data.map(function (country) {
             return (
               <option value={country.code}>
                 {country.name}
@@ -22,6 +37,7 @@
               <label for="country">
                 Countries
               </label>
+              <br />
               <select name="country">
                 {countryOptions}
               </select>
@@ -31,7 +47,7 @@
       });
 
       React.render(
-        <CountrySelect url="countries" />,
+        <CountrySelect url="/countries" />,
         document.getElementById('content')
       );
     </script>
