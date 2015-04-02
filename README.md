@@ -17,8 +17,8 @@ Shows the [country](#country) that matches the country `code`.
 ### `GET /countries/:code/list`
 Shows the [flattened `list`](#list) portion of the [country](#country)'s [skills list](#skills-list) that matches the country `code`.
 
-### `GET /countries/:code/match` (TODO)
-Given a `job` in the query string, return the [list](#list) of skills from the Master List that are relevant, with a `score` indicating their level of relevance, with any skills from the country's skills list filtered out.
+### `GET /countries/:code/inverse`
+Shows the [list](#list) of skills from the Master List that are not on the country's skills list.
 
 ### `GET /skills`
 The Master [List](#skills-list) of all J-1 skills, as per the [2009 State Department Master List](http://travel.state.gov/content/visas/english/study-exchange/exchange/exchange-visitor-skills-list/exchange-skills-list-2009.html).
