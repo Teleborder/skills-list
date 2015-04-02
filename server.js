@@ -1,10 +1,12 @@
 require('./polyfills');
 
 var express = require('express'),
+    settings = require('./settings'),
     middleware = require('./middleware'),
     routes = require('./routes'),
     app = express();
 
+settings(app);
 middleware(app);
 routes(app);
 
