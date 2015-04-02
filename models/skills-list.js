@@ -1,14 +1,15 @@
 var jsdom = require('jsdom');
 
 function SkillsList(country) {
-  this.code = this.country.code || "master";
+  this.code = country ? country.code : "master";
   this.groups = [];
 }
 
 SkillsList.prototype.toJSON = function () {
   return {
     source: this.url(),
-    groups: this.groups
+    groups: this.groups,
+    list: this.list()
   };
 };
 
@@ -21,6 +22,26 @@ SkillsList.prototype.initialize = function (callback) {
     self.groups = groups;
     callback(null, self);
   });
+};
+
+SkillsList.prototype.list = function () {
+  var list = [];
+  this.groups.forEach(function (group) {
+    if(group.subgroups.length) {
+      group.subgroups.forEach(function (subgroup) {
+        list.push({
+          name: subgroup.name,
+          code: subgroup.code
+        });
+      });
+    } else {
+      list.push({
+        name: group.name,
+        code: group.code
+      });
+    }
+  });
+  return list;
 };
 
 SkillsList.prototype.url = function () {
@@ -75,7 +96,7 @@ SkillsList.ALL = {};
 
 SkillsList.master = function (callback) {
   if(this.ALL.master) {
-    callback(null, this.ALL.master);
+    return callback(null, this.ALL.master);
   }
   var list = this.ALL.master = new SkillsList();
   list.initialize(callback);
@@ -83,7 +104,7 @@ SkillsList.master = function (callback) {
 
 SkillsList.forCountry = function (country, callback) {
   if(this.ALL[country.code]) {
-    callback(null, this.ALL[country.code]);
+    return callback(null, this.ALL[country.code]);
   }
   var list = this.ALL[country.code] = new SkillsList(country);
   list.initialize(callback);
