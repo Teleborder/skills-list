@@ -1,4 +1,5 @@
-var countries = require('world-countries');
+// http://data.okfn.org/data/core/country-codes/r/country-codes.json
+var countries = require('../data/country-codes');
 
 function Country(name, code) {
   this.name = name;
@@ -13,7 +14,7 @@ Country.prototype.toJSON = function () {
 };
 
 Country.ALL = countries.map(function (countryOptions) {
-  return new Country(countryOptions.name.common, countryOptions.cca2);
+  return new Country(countryOptions.name, countryOptions.FIPS);
 });
 
 Country.find = function (code) {
