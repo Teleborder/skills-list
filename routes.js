@@ -1,6 +1,9 @@
 var controllers = require('./controllers');
 
 function routes(app) {
+  app.get('/', function (req, res) {
+    res.redirect('https://github.com/Teleborder/skills-list');
+  });
   app.get('/countries', controllers.countries.index);
   app.get('/countries/:code', controllers.countries.show);
   app.get('/countries/:code/list', controllers.countries.showList);
