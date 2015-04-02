@@ -16,13 +16,13 @@ Country.ALL = countries.map(function (countryOptions) {
   return new Country(countryOptions.name.common, countryOptions.cca2);
 });
 
-Country.find = function (name) {
+Country.find = function (code) {
   country = this.ALL.find(function (country) {
-    return country.name.toLowerCase() === name.toLowerCase();
+    return country.code.toLowerCase() === code.toLowerCase();
   });
 
   if(!country) {
-    throw new Error("No Country named `" + name + "`.");
+    throw new Error("No Country with code `" + code + "`.");
   }
 
   return country;
