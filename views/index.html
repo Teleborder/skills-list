@@ -6,11 +6,33 @@
     <script src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
   </head>
   <body>
-    <div id="example"></div>
+    <div id="content"></div>
     <script type="text/jsx">
+      var CountrySelect = React.createClass({
+        render: function () {
+          var countryOptions = this.props.data.map(function (country) {
+            return (
+              <option value={country.code}>
+                {country.name}
+              </option>
+            );
+          });
+          return (
+            <div>
+              <label for="country">
+                Countries
+              </label>
+              <select name="country">
+                {countryOptions}
+              </select>
+            </div>
+          )
+        }
+      });
+
       React.render(
-        <h1>Hello, world!</h1>,
-        document.getElementById('example')
+        <CountrySelect url="countries" />,
+        document.getElementById('content')
       );
     </script>
   </body>
