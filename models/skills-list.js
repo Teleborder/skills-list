@@ -23,7 +23,7 @@ SkillsList.prototype.initialize = function (callback) {
   });
 };
 
-SkillsList.prototoype.url = function () {
+SkillsList.prototype.url = function () {
   var baseUrl = "http://travel.state.gov/content/visas/english/study-exchange/exchange/exchange-visitor-skills-list";
   if(this.code === "master") {
     return baseUrl + "/exchange-skills-list-2009.html";

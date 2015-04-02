@@ -9,7 +9,7 @@ exports.show = function (req, res) {
     var country = Country.find(req.params.code);
     var list = SkillsList.forCountry(country);
     var json = country.toJSON();
-    json.skills = list.toJSON();
+    json.skillsList = list.toJSON();
     res.json(json);
   } catch(e) {
     res.status(500).json({
