@@ -39,6 +39,7 @@
               </label>
               <br />
               <select name="country">
+                <option>Select a country...</option>
                 {countryOptions}
               </select>
             </div>
@@ -46,8 +47,45 @@
         }
       });
 
+      var SkillsList = React.createClass({
+        getInitialState: function() {
+          return { data: [] };
+        },
+        render: function () {
+          var skills = this.state.data.map(function (skill) {
+            return (
+              <li>
+                {skill.name}
+              </li>
+            );
+          });
+          return (
+            <div>
+              <h3>
+                {this.state.data.length} Skills Available
+              </h3>
+              <ul>
+                {skills}
+              </ul>
+            </div>
+          )
+        }
+      });
+
+      var SkillsListSelector = React.createClass({
+        render: function () {
+          return (
+            <div>
+              <h2>Skills List Selector</h2>
+              <CountrySelect url="/countries" />
+              <SkillsList />
+            </div>
+          );
+        }
+      });
+
       React.render(
-        <CountrySelect url="/countries" />,
+        <SkillsListSelector />,
         document.getElementById('content')
       );
     </script>
