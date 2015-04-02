@@ -51,11 +51,8 @@
       });
 
       var SkillsList = React.createClass({
-        getInitialState: function() {
-          return { data: [] };
-        },
         render: function () {
-          var skills = this.state.data.map(function (skill) {
+          var skills = this.props.data.map(function (skill) {
             return (
               <li>
                 {skill.name}
@@ -65,7 +62,7 @@
           return (
             <div>
               <h3>
-                {this.state.data.length} Skills Available
+                {this.props.data.length} Skills Available
               </h3>
               <ul>
                 {skills}
@@ -76,15 +73,49 @@
       });
 
       var SkillsListSelector = React.createClass({
+        getInitialState: function() {
+          return {
+            loading: false,
+            data: []
+          };
+        },
         changeCountry: function (code) {
-
+          this.setState({
+            loading: true,
+            data: []
+          });
+          $.ajax({
+            url: "/countries/" + code + "/inverse",
+            dataType: 'json',
+            success: function(data) {
+              this.setState({
+                loading: false,
+                data: data
+              });
+            }.bind(this),
+            error: function(xhr, status, err) {
+              console.error(this.props.url, status, err.toString());
+            }.bind(this)
+          });
         },
         render: function () {
+          var content;
+          if(this.state.loading) {
+            content = (
+              <h3>Loading...</h3>
+            );
+          } else {
+            content = (
+              <SkillsList data={this.state.data} />
+            );
+          }
+
           return (
             <div>
               <h2>Skills List Selector</h2>
               <CountrySelect url="/countries" onChange={this.changeCountry} />
-              <SkillsList />
+              {content}
+              
             </div>
           );
         }
