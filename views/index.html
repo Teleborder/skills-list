@@ -24,6 +24,9 @@
             }.bind(this)
           });
         },
+        changeCountry: function (e) {
+          this.props.onChange($(e.target).val());
+        },
         render: function () {
           var countryOptions = this.state.data.map(function (country) {
             return (
@@ -38,7 +41,7 @@
                 Countries
               </label>
               <br />
-              <select name="country">
+              <select name="country" onChange={this.changeCountry}>
                 <option>Select a country...</option>
                 {countryOptions}
               </select>
@@ -73,11 +76,14 @@
       });
 
       var SkillsListSelector = React.createClass({
+        changeCountry: function (code) {
+
+        },
         render: function () {
           return (
             <div>
               <h2>Skills List Selector</h2>
-              <CountrySelect url="/countries" />
+              <CountrySelect url="/countries" onChange={this.changeCountry} />
               <SkillsList />
             </div>
           );
