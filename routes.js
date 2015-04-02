@@ -2,7 +2,7 @@ var controllers = require('./controllers');
 
 function routes(app) {
   app.get('/', function (req, res) {
-    res.redirect('https://github.com/Teleborder/skills-list');
+    res.sendFile(__dirname + '/views/index.html');
   });
   app.get('/countries', controllers.countries.index);
   app.get('/countries/:code', controllers.countries.show);
