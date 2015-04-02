@@ -36,16 +36,10 @@
             );
           });
           return (
-            <div>
-              <label for="country">
-                Countries
-              </label>
-              <br />
-              <select name="country" onChange={this.changeCountry}>
-                <option>Select a country...</option>
-                {countryOptions}
-              </select>
-            </div>
+            <select name="country" onChange={this.changeCountry}>
+              <option value="">Select a country...</option>
+              {countryOptions}
+            </select>
           )
         }
       });
@@ -80,6 +74,13 @@
           };
         },
         changeCountry: function (code) {
+          if(!code) {
+            this.setState({
+              loading: false,
+              data: []
+            });
+            return;
+          }
           this.setState({
             loading: true,
             data: []
