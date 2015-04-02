@@ -15,13 +15,13 @@ Array of all ([according to mledoze](https://github.com/mledoze/countries)) [cou
 Shows the [country](#country) that matches the country `code`.
 
 ### `GET /countries/:code/list`
-Shows the flattened `list` portion of the [country](#country)'s [skills list](#list) that matches the country `code`.
+Shows the flattened `list` portion of the [country](#country)'s [skills list](#skills-list) that matches the country `code`.
 
 ### `GET /skills`
-The Master [List](#list) of all J-1 skills, as per the [2009 State Department Master List](http://travel.state.gov/content/visas/english/study-exchange/exchange/exchange-visitor-skills-list/exchange-skills-list-2009.html).
+The Master [List](#skills-list) of all J-1 skills, as per the [2009 State Department Master List](http://travel.state.gov/content/visas/english/study-exchange/exchange/exchange-visitor-skills-list/exchange-skills-list-2009.html).
 
 ### `GET /skills/list`
-Shows the flattened `list` portion of the Master [Skills List](#list).
+Shows the flattened `list` portion of the Master [Skills List](#skills-list).
 
 Objects
 -------
@@ -30,10 +30,10 @@ Objects
 A `country` is an object representing a country with the following properties:
 - `name`: Common name for the country
 - `code`: 2 digit country code used by the US State Department
-- `skillsList`: The country's [skills list](#list). (not available on the countries index).
+- `skillsList`: The country's [skills list](#skills-list). (not available on the countries index).
 
-### List
-A `list` is an object representing a skills list with the following properties:
+### Skills List
+A `skillsList` is an object representing a skills list with the following properties:
 - `source`: URL source of the list.
 - `groups`: Array of groups of skills.
   - `code`: Numerical-ish code of the group (e.g. "01")
@@ -41,7 +41,9 @@ A `list` is an object representing a skills list with the following properties:
   - `subgroups`: Array of subgroups for this group (if applicable)
     - `code`: Numerical-ish code of the subgroup (e.g. "1.00")
     - `name`: Name of the subgroup (e.g. "Agriculture, General")
-- `list`: Flattened array of skills. It uses subgroups where possible, and groups if no subgroups exist (such as Library Science)
+
+### List
+A `list` is a flattened array of skills based on a [skills list](#skills-list). It uses subgroups where possible, and groups if no subgroups exist (such as Library Science)
   - `code`: Numerical-ish code of the group or subgroup
   - `name`: Name of the group or subgroup
 

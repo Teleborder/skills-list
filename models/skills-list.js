@@ -8,8 +8,7 @@ function SkillsList(country) {
 SkillsList.prototype.toJSON = function () {
   return {
     source: this.url(),
-    groups: this.groups,
-    list: this.list()
+    groups: this.groups
   };
 };
 
