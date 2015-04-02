@@ -1,0 +1,15 @@
+{
+  "name": "skills-list",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Trey Griffith <trey.griffith@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.12.3",
+    "jsdom": "^3.1.2"
+  }
+}
